@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker_dialog.dart';
 import 'package:flutter_colorpicker/material_picker.dart';
 import 'package:flutter_colorpicker/block_picker.dart';
 import 'package:flutter_colorpicker/utils.dart';
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
                         titlePadding: const EdgeInsets.all(0.0),
                         contentPadding: const EdgeInsets.all(0.0),
                         content: SingleChildScrollView(
-                          child: ColorPicker(
+                          child: ColorPickerDialog(
                             pickerColor: currentColor,
                             onColorChanged: changeColor,
                             colorPickerWidth: 300.0,
@@ -55,13 +56,27 @@ class _MyAppState extends State<MyApp> {
                             displayThumbColor: true,
                             enableLabel: true,
                             paletteType: PaletteType.hsv,
+                            doneText: "Get it",
+                            doneTextStyle: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black
+                            ),
+                            headerText: "Pick a color!",
+                            headerTextStyle: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black
+                            ),
+                            callBackColor: () {
+                              Navigator.pop(context);
+                              print("Callback -> $changeColor");
+                            },
                           ),
                         ),
                       );
                     },
                   );
                 },
-                child: const Text('Change me'),
+                child: const Text('ColorPickerDialog'),
                 color: currentColor,
                 textColor: useWhiteForeground(currentColor)
                     ? const Color(0xffffffff)
