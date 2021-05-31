@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
                                 fontSize: 18,
                                 color: Colors.black
                             ),
-                            callBackColor: () {
+                            callBackColor: (color) {
                               Navigator.pop(context);
                               print("Callback -> $changeColor");
                             },

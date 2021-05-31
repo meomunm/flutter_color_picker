@@ -25,7 +25,7 @@ class ColorPickerDialog extends StatefulWidget {
     @required this.callBackColor,
   });
 
-  final Function() callBackColor;
+  final Function(Color) callBackColor;
   final Color pickerColor;
   final ValueChanged<Color> onColorChanged;
   final PaletteType paletteType;
@@ -134,7 +134,7 @@ class _ColorPickerDialogState extends State<ColorPickerDialog> {
           InkWell(
             onTap: () {
               widget.onColorChanged(currentHsvColor.toColor());
-              widget.callBackColor();
+              widget.callBackColor(currentHsvColor.toColor());
             },
             child: Align(
               alignment: Alignment.centerRight,
